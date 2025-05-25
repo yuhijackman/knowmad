@@ -36,6 +36,7 @@
 			"include": [
 				"next.config.ts",
 				"postcss.config.mjs",
+				"drizzle.config.ts",
 				"layout.tsx",
 				"page.tsx"
 			],
