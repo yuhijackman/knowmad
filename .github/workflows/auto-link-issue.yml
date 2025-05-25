@@ -1,0 +1,32 @@
+name: Auto Link Issue to PR
+
+on:
+  pull_request:
+    types: [opened]
+
+jobs:
+  link-issue:
+    runs-on: ubuntu-latest
+    permissions:  # Add this block
+      pull-requests: write
+    steps:
+      - name: Extract issue number from branch and update PR
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const branch = context.payload.pull_request.head.ref;
+            const match = branch.match(/issue-(\d+)/);
+            if (match) {
+              const issueNumber = match[1];
+              const prNumber = context.payload.pull_request.number;
+              const body = context.payload.pull_request.body || "";
+              const issueRef = `\n\nCloses #${issueNumber}`;
+              if (!body.includes(issueRef)) {
+                await github.rest.pulls.update({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  pull_number: prNumber,
+                  body: body + issueRef
+                });
+              }
+            }
