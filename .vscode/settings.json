@@ -1,0 +1,32 @@
+{
+	"[html]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[css]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
+	"[markdown]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[typescriptreact]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
+	"cSpell.words": ["biomejs", "nextjs"],
+	"css.validate": false,
+	"editor.codeActionsOnSave": {
+		"quickfix.biome": "always",
+		"source.organizeImports.biome": "always"
+	},
+	"editor.defaultFormatter": "biomejs.biome",
+	"editor.formatOnSave": true,
+	"editor.quickSuggestions": {
+		"strings": true
+	},
+	"files.encoding": "utf8",
+	"files.eol": "\n",
+	"tailwindCSS.experimental.classRegex": [
+		["classNames\\(([^)]*)\\)", "\"([^\"]*)\""]
+	],
+	"typescript.preferences.importModuleSpecifier": "non-relative",
+	"typescript.tsdk": "node_modules/typescript/lib"
+}
