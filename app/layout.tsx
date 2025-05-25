@@ -5,13 +5,13 @@ import "./globals.css";
 const figtree = Figtree({
 	variable: "--font-figtree",
 	subsets: ["latin"],
-	display: 'swap',
+	display: "swap",
 });
 
 const geistMono = Geist_Mono({
 	variable: "--font-geist-mono",
 	subsets: ["latin"],
-	display: 'swap'
+	display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -26,9 +26,7 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body
-				className={`${figtree.variable} ${geistMono.variable} antialiased`}
-			>
+			<body className={`${figtree.variable} ${geistMono.variable} antialiased`}>
 				{children}
 			</body>
 		</html>
