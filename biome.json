@@ -47,6 +47,26 @@
 					}
 				}
 			}
+		},
+		{
+			"include": ["db/schema/index.ts"],
+			"linter": {
+				"rules": {
+					"performance": {
+						"noBarrelFile": "off"
+					}
+				}
+			}
+		},
+		{
+			"include": ["db/index.ts"],
+			"linter": {
+				"rules": {
+					"style": {
+						"noNamespaceImport": "off"
+					}
+				}
+			}
 		}
 	]
 }
