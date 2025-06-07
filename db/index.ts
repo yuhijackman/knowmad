@@ -1,4 +1,4 @@
-import { schema } from "@/db/schema";
+import * as schema from "@/db/schema";
 import { drizzle } from "drizzle-orm/postgres-js";
 import postgres from "postgres";
 
@@ -7,4 +7,4 @@ if (!connectionString) {
 	throw new Error("DATABASE_URL environment variable is not set");
 }
 export const client = postgres(connectionString, { prepare: false });
-export const db = drizzle(client, { schema });
+export const db = drizzle(client, { schema, casing: "snake_case" });

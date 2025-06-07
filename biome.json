@@ -7,7 +7,7 @@
 	},
 	"files": {
 		"ignoreUnknown": false,
-		"ignore": ["public", ".next", "node_modules"]
+		"ignore": ["public", ".next", "node_modules", "drizzle"]
 	},
 	"formatter": {
 		"enabled": true,
@@ -44,6 +44,26 @@
 				"rules": {
 					"style": {
 						"noDefaultExport": "off"
+					}
+				}
+			}
+		},
+		{
+			"include": ["db/schema/index.ts"],
+			"linter": {
+				"rules": {
+					"performance": {
+						"noBarrelFile": "off"
+					}
+				}
+			}
+		},
+		{
+			"include": ["db/index.ts"],
+			"linter": {
+				"rules": {
+					"style": {
+						"noNamespaceImport": "off"
 					}
 				}
 			}
