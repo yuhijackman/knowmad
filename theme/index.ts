@@ -1,10 +1,12 @@
 import { type MantineColorsTuple, createTheme } from "@mantine/core";
 import { Figtree } from "next/font/google";
+
 const figtree = Figtree({
 	variable: "--font-figtree",
 	subsets: ["latin"],
 	display: "swap",
 });
+
 // Generating 10-shade palettes for our accent colors
 const focusBlue: MantineColorsTuple = [
 	"#eaf0f8",
@@ -108,7 +110,7 @@ const errorRed: MantineColorsTuple = [
 // Our custom neutral palette based on the original design
 const brandGray: MantineColorsTuple = [
 	"#EFF0F3", // 0: Paper White (Background)
-	"##E7E8EC", // 1: Light Slate (UI Elements)
+	"#E7E8EC", // 1: Light Slate (UI Elements)
 	"#E0E1E6", // 2: Subtle Line (Borders)
 	"#D8D9E0", // 3
 	"#CDCED7", // 4
