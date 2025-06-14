@@ -1,6 +1,10 @@
 import "@mantine/core/styles.css"; //
 import { theme } from "@/theme";
-import { ColorSchemeScript, MantineProvider } from "@mantine/core";
+import {
+	ColorSchemeScript,
+	MantineProvider,
+	mantineHtmlProps,
+} from "@mantine/core";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -14,11 +18,15 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="en">
+		<html lang="en" {...mantineHtmlProps}>
 			<head>
 				<ColorSchemeScript />
+				<meta
+					name="viewport"
+					content="minimum-scale=1, initial-scale=1, width=device-width, user-scalable=no"
+				/>
 			</head>
-			<body className="antialiased">
+			<body>
 				<MantineProvider theme={theme} defaultColorScheme="auto">
 					{children}
 				</MantineProvider>
