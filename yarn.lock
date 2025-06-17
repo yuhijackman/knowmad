@@ -736,6 +736,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@mantinex/dev-icons@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "@mantinex/dev-icons@npm:2.0.0"
+  peerDependencies:
+    "@mantine/core": ">=7.0.0"
+    "@mantine/hooks": ">=7.0.0"
+    react: ^18.x || ^19.x
+    react-dom: ^18.x || ^19.x
+  checksum: 10c0/d447f827c1fe46143c6ff35a2258276a5af04cf9e4ae46c7a67993ee0b86b7faf4ed827f2a1a53790b18792a94f0339ab8daac13b0f1ea62e5d78673b35ca266
+  languageName: node
+  linkType: hard
+
 "@next/env@npm:15.3.2":
   version: 15.3.2
   resolution: "@next/env@npm:15.3.2"
@@ -1487,6 +1499,7 @@ __metadata:
     "@biomejs/biome": "npm:1.9.4"
     "@mantine/core": "npm:^8.1.0"
     "@mantine/hooks": "npm:^8.1.0"
+    "@mantinex/dev-icons": "npm:^2.0.0"
     "@supabase/ssr": "npm:^0.6.1"
     "@supabase/supabase-js": "npm:^2.50.0"
     "@types/node": "npm:^20"
