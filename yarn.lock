@@ -1232,6 +1232,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"drizzle-zod@npm:^0.8.2":
+  version: 0.8.2
+  resolution: "drizzle-zod@npm:0.8.2"
+  peerDependencies:
+    drizzle-orm: ">=0.36.0"
+    zod: ^3.25.1
+  checksum: 10c0/d0b41b25fff3bf4927b1cf51602d24201ea12f5c2931081f798e25eb8724fdae44c693d2070c1dcffba673c132115fe005927f14cb3cdd624c94da487483f383
+  languageName: node
+  linkType: hard
+
 "esbuild-register@npm:^3.5.0":
   version: 3.6.0
   resolution: "esbuild-register@npm:3.6.0"
@@ -1507,6 +1517,7 @@ __metadata:
     "@types/react-dom": "npm:^19"
     drizzle-kit: "npm:^0.31.1"
     drizzle-orm: "npm:^0.43.1"
+    drizzle-zod: "npm:^0.8.2"
     next: "npm:15.3.2"
     postcss: "npm:^8.5.5"
     postcss-preset-mantine: "npm:^1.17.0"
