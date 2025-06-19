@@ -67,6 +67,21 @@
 					}
 				}
 			}
+		},
+		{
+			"include": ["lib/actions/*"],
+			"linter": {
+				"rules": {
+					"style": {
+						"useNamingConvention": {
+							"level": "off",
+							"options": {
+								"strictCase": false
+							}
+						}
+					}
+				}
+			}
 		}
 	]
 }
