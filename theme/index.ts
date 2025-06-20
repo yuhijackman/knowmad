@@ -151,7 +151,7 @@ export const theme = createTheme({
 	other: {
 		paperWhite: brandGray[0],
 		lightSlate: brandGray[1],
-		charcoalText: brandGray[8],
+		charcoalText: brandGray[9],
 	},
 
 	/* ### Default Component Overrides ### */
@@ -178,12 +178,12 @@ export const theme = createTheme({
 		},
 		Text: {
 			defaultProps: {
-				c: "brandGray.8", // Default text color is Charcoal
+				c: "brandGray.9", // Default text color is Charcoal
 			},
 		},
 		Title: {
 			defaultProps: {
-				c: "brandGray.8",
+				c: "brandGray.9",
 			},
 		},
 	},
