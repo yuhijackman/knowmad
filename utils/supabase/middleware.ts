@@ -1,5 +1,13 @@
+import {
+	DASHBOARD_PATH,
+	LOGIN_PATH,
+	ONBOARDING_PATH,
+	SIGN_UP_PATH,
+} from "@/constants/routes";
 import { createServerClient } from "@supabase/ssr";
 import { type NextRequest, NextResponse } from "next/server";
+
+const PROTECTED_PATHS = [DASHBOARD_PATH, ONBOARDING_PATH];
 
 export async function updateSession(request: NextRequest) {
 	let supabaseResponse = NextResponse.next({
@@ -35,7 +43,27 @@ export async function updateSession(request: NextRequest) {
 			},
 		},
 	});
-	// refreshing the auth token
-	await supabase.auth.getUser();
+
+	const {
+		data: { user },
+	} = await supabase.auth.getUser();
+	const isProtectedPath = PROTECTED_PATHS.some((path) =>
+		request.nextUrl.pathname.startsWith(path),
+	);
+	if (!user && isProtectedPath) {
+		const redirectUrl = request.nextUrl.clone();
+		redirectUrl.pathname = LOGIN_PATH;
+		return NextResponse.redirect(redirectUrl);
+	}
+	if (
+		user &&
+		(request.nextUrl.pathname === LOGIN_PATH ||
+			request.nextUrl.pathname === SIGN_UP_PATH)
+	) {
+		const redirectUrl = request.nextUrl.clone();
+		redirectUrl.pathname = DASHBOARD_PATH;
+		return NextResponse.redirect(redirectUrl);
+	}
+
 	return supabaseResponse;
 }

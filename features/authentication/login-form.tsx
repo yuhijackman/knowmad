@@ -1,8 +1,12 @@
 "use client";
 
+import { SIGN_UP_PATH } from "@/constants/routes";
 import { loginAction } from "@/lib/actions/authentication";
+import { IconInfoCircle } from "@tabler/icons-react";
+
 import type { LoginInput } from "@/zod-schemas/authentication";
 import {
+	Alert,
 	Anchor,
 	Button,
 	Checkbox,
@@ -18,6 +22,7 @@ import { useActionState, useMemo } from "react";
 type LoginInputKeys = keyof LoginInput;
 
 export function LoginForm() {
+	const icon = <IconInfoCircle />;
 	const [state, formAction, pending] = useActionState(loginAction, undefined);
 	const initialEmail = state?.submittedData?.email || "";
 	// Security Note: Passwords should generally NOT be re-populated into input fields
@@ -43,11 +48,18 @@ export function LoginForm() {
 		}
 		return errorsMap;
 	}, [state?.errors, state?.success]);
+	const error =
+		state?.success === false && state?.message !== "" ? state.message : null;
 
 	return (
 		<>
 			<form action={formAction}>
 				<Stack>
+					{error && (
+						<Alert variant="light" color="red" title="Login Failed" icon={icon}>
+							{error}
+						</Alert>
+					)}
 					<TextInput
 						label="Email"
 						name="email"
@@ -77,9 +89,10 @@ export function LoginForm() {
 						</Anchor>
 					</Group>
 				</Stack>
+
 				<Group justify="space-between" mt="xl">
 					<Text c="dimmed" size="sm" ta="center" mt="md">
-						Don't have an account? <Link href="/register">Register</Link>
+						Don't have an account? <Link href={SIGN_UP_PATH}>Register</Link>
 					</Text>
 					<Button fullWidth={true} radius="xl" type="submit" loading={pending}>
 						Sign in
