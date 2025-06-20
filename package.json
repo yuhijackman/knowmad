@@ -16,6 +16,7 @@
 		"@mantinex/dev-icons": "^2.0.0",
 		"@supabase/ssr": "^0.6.1",
 		"@supabase/supabase-js": "^2.50.0",
+		"@tabler/icons-react": "^3.34.0",
 		"drizzle-orm": "^0.43.1",
 		"drizzle-zod": "^0.8.2",
 		"next": "15.3.2",
