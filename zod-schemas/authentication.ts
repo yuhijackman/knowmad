@@ -15,13 +15,13 @@ export const signUpSchema = z
 		password: z
 			.string()
 			.min(8, { message: "Password must be at least 8 characters long." }),
-		confirmPassword: z.string().min(8, {
-			message: "Confirm password must be at least 8 characters long.",
+		repeatPassword: z.string().min(8, {
+			message: "Repeat password must be at least 8 characters long.",
 		}),
 	})
-	.refine((data) => data.password === data.confirmPassword, {
+	.refine((data) => data.password === data.repeatPassword, {
 		message: "Passwords don't match.",
-		path: ["confirmPassword"], // This targets the 'confirmPassword' field for the error
+		path: ["repeatPassword"], // This targets the 'confirmPassword' field for the error
 	});
 
 export const insertUserDbSchema = createInsertSchema(users, {
