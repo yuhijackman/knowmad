@@ -31,7 +31,7 @@ export function validatedAction<TSchema extends z.ZodTypeAny, TResult>(
 			return {
 				success: false,
 				errors: validationResult.error.issues,
-				message: "Validation failed. Please check your input.",
+				message: "Oops, something wasn't right.",
 				submittedData: rawFormData as Partial<z.infer<TSchema>>,
 			};
 		}

@@ -1,6 +1,6 @@
 "use client";
 
-import { authenticate } from "@/lib/actions/authentication";
+import { loginAction } from "@/lib/actions/authentication";
 import type { LoginInput } from "@/zod-schemas/authentication";
 import {
 	Anchor,
@@ -18,7 +18,7 @@ import { useActionState, useMemo } from "react";
 type LoginInputKeys = keyof LoginInput;
 
 export function LoginForm() {
-	const [state, formAction, pending] = useActionState(authenticate, undefined);
+	const [state, formAction, pending] = useActionState(loginAction, undefined);
 	const initialEmail = state?.submittedData?.email || "";
 	// Security Note: Passwords should generally NOT be re-populated into input fields
 	// even on validation failure. This is a common security practice to prevent
