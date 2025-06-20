@@ -1,3 +1,5 @@
+import { isRedirectError } from "@/utils/error";
+import { getURLFromRedirectError } from "next/dist/client/components/redirect";
 import type { z } from "zod";
 
 export type ValidatedActionResponse<
@@ -41,6 +43,13 @@ export function validatedAction<TSchema extends z.ZodTypeAny, TResult>(
 			const result = await actionFn(data);
 			return { success: true, data: result };
 		} catch (error) {
+			if (isRedirectError(error)) {
+				if (getURLFromRedirectError(error) !== null) {
+					// If so, re-throw it so Next.js can handle the redirect.
+					throw error;
+				}
+			}
+
 			const submittedData = rawFormData as Partial<z.infer<TSchema>>;
 			if (error instanceof Error) {
 				return {

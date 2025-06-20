@@ -1,5 +1,6 @@
 "use server";
 
+import { DASHBOARD_PATH, SIGN_UP_SUCCESS_PATH } from "@/constants/routes";
 import { validatedAction } from "@/lib/actions/validatedAction";
 import { createClient } from "@/utils/supabase/server";
 import { loginSchema, signUpSchema } from "@/zod-schemas/authentication";
@@ -15,13 +16,11 @@ export const loginAction = validatedAction(loginSchema, async (formData) => {
 	});
 
 	if (error) {
-		throw new Error(
-			error.message || "Invalid credentials or login failed. Please try again.",
-		);
+		throw new Error("Incorrect email address or password.");
 	}
 
 	revalidatePath("/", "layout");
-	redirect("/dashboard");
+	redirect(DASHBOARD_PATH);
 });
 
 export const signUpAction = validatedAction(signUpSchema, async (formData) => {
@@ -35,7 +34,6 @@ export const signUpAction = validatedAction(signUpSchema, async (formData) => {
 	if (error) {
 		throw new Error(error.message || "Sign up failed. Please try again.");
 	}
-
 	revalidatePath("/", "layout");
-	redirect("/dashboard");
+	redirect(SIGN_UP_SUCCESS_PATH);
 });
