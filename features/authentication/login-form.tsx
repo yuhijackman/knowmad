@@ -1,15 +1,13 @@
 "use client";
 
-import { SIGN_UP_PATH } from "@/constants/routes";
+import { FORGOT_PASSWORD_PATH, SIGN_UP_PATH } from "@/constants/routes";
 import { loginAction } from "@/lib/actions/authentication";
 import { IconInfoCircle } from "@tabler/icons-react";
 
 import type { LoginInput } from "@/zod-schemas/authentication";
 import {
 	Alert,
-	Anchor,
 	Button,
-	Checkbox,
 	Group,
 	PasswordInput,
 	Stack,
@@ -48,6 +46,7 @@ export function LoginForm() {
 		}
 		return errorsMap;
 	}, [state?.errors, state?.success]);
+
 	const error =
 		state?.success === false && state?.message !== "" ? state.message : null;
 
@@ -82,15 +81,14 @@ export function LoginForm() {
 						defaultValue={initialPassword}
 					/>
 
-					<Group justify="space-between" mb="lg">
-						<Checkbox label="Remember me" name="remember" disabled={pending} />
-						<Anchor component="button" size="sm" type="button">
-							Forgot password?
-						</Anchor>
+					<Group justify="space-between">
+						<Text size="sm" ta="center">
+							<Link href={FORGOT_PASSWORD_PATH}>Forgot password?</Link>
+						</Text>
 					</Group>
 				</Stack>
 
-				<Group justify="space-between" mt="xl">
+				<Group justify="space-between">
 					<Text c="dimmed" size="sm" ta="center" mt="md">
 						Don't have an account? <Link href={SIGN_UP_PATH}>Register</Link>
 					</Text>

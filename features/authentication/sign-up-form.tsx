@@ -4,6 +4,7 @@ import { LOGIN_PATH } from "@/constants/routes";
 import { signUpAction } from "@/lib/actions/authentication";
 import type { SignUpInput } from "@/zod-schemas/authentication";
 import {
+	Alert,
 	Button,
 	Group,
 	PasswordInput,
@@ -11,12 +12,15 @@ import {
 	Text,
 	TextInput,
 } from "@mantine/core";
+import { IconInfoCircle } from "@tabler/icons-react";
 import Link from "next/link";
 import { useActionState, useMemo } from "react";
 
 type SignUpInputKeys = keyof SignUpInput;
 
 export function SignUpForm() {
+	const icon = <IconInfoCircle />;
+
 	const [state, formAction, pending] = useActionState(signUpAction, undefined);
 	const initialEmail = state?.submittedData?.email || "";
 	// Security Note: Passwords should generally NOT be re-populated into input fields
@@ -47,10 +51,18 @@ export function SignUpForm() {
 		return errorsMap;
 	}, [state?.errors, state?.success]);
 
+	const error =
+		state?.success === false && state?.message !== "" ? state.message : null;
+
 	return (
 		<>
 			<form action={formAction}>
 				<Stack>
+					{error && (
+						<Alert variant="light" color="red" title="Login Failed" icon={icon}>
+							{error}
+						</Alert>
+					)}
 					<TextInput
 						label="Email"
 						name="email"
@@ -85,7 +97,7 @@ export function SignUpForm() {
 					/>
 				</Stack>
 
-				<Group justify="space-between" mt="xl">
+				<Group justify="space-between">
 					<Text c="dimmed" size="sm" ta="center" mt="md">
 						Already have an account? <Link href={LOGIN_PATH}>Login</Link>
 					</Text>

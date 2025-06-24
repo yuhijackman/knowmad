@@ -23,6 +23,9 @@
 		"strings": true
 	},
 	"files.encoding": "utf8",
+	"files.associations": {
+		"*.module.css": "css"
+	},
 	"files.eol": "\n",
 	"tailwindCSS.experimental.classRegex": [
 		["classNames\\(([^)]*)\\)", "\"([^\"]*)\""]
