@@ -74,7 +74,7 @@
 			}
 		},
 		{
-			"include": ["lib/actions/*"],
+			"include": ["lib/actions/*", "theme/index.ts"],
 			"linter": {
 				"rules": {
 					"style": {
