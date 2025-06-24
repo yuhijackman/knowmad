@@ -1,6 +1,5 @@
 // Stores links, notes, or files associated with a Learning Space.
-import { profiles } from "@/db/schema/profiles";
-import { realms } from "@/db/schema/realms";
+
 import {
 	index,
 	pgEnum,
@@ -9,6 +8,8 @@ import {
 	timestamp,
 	uuid,
 } from "drizzle-orm/pg-core";
+import { profiles } from "@/db/schema/profiles";
+import { realms } from "@/db/schema/realms";
 
 export const ResourceType = {
 	url: "Url",

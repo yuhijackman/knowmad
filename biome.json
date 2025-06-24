@@ -1,5 +1,5 @@
 {
-	"$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
+	"$schema": "https://biomejs.dev/schemas/2.0.5/schema.json",
 	"vcs": {
 		"enabled": false,
 		"clientKind": "git",
@@ -7,21 +7,41 @@
 	},
 	"files": {
 		"ignoreUnknown": false,
-		"ignore": ["public", ".next", "node_modules", "drizzle"]
+		"includes": [
+			"**",
+			"!**/public",
+			"!**/.next",
+			"!**/node_modules",
+			"!**/drizzle"
+		]
 	},
 	"formatter": {
 		"enabled": true,
 		"indentStyle": "tab"
 	},
-	"organizeImports": {
-		"enabled": true
+	"css": {
+		"parser": {
+			"cssModules": true
+		}
 	},
+	"assist": { "actions": { "source": { "organizeImports": "on" } } },
 	"linter": {
 		"enabled": true,
 		"rules": {
-			"all": true,
 			"suspicious": {
 				"noReactSpecificProps": "off"
+			},
+			"style": {
+				"noParameterAssign": "error",
+				"useAsConstAssertion": "error",
+				"useDefaultParameterLast": "error",
+				"useEnumInitializers": "error",
+				"useSelfClosingElements": "error",
+				"useSingleVarDeclarator": "error",
+				"noUnusedTemplateLiteral": "error",
+				"useNumberNamespace": "error",
+				"noInferrableTypes": "error",
+				"noUselessElse": "error"
 			}
 		}
 	},
@@ -33,12 +53,12 @@
 	},
 	"overrides": [
 		{
-			"include": [
-				"next.config.ts",
-				"postcss.config.mjs",
-				"drizzle.config.ts",
-				"layout.tsx",
-				"page.tsx"
+			"includes": [
+				"**/next.config.ts",
+				"**/postcss.config.mjs",
+				"**/drizzle.config.ts",
+				"**/layout.tsx",
+				"**/page.tsx"
 			],
 			"linter": {
 				"rules": {
@@ -49,7 +69,7 @@
 			}
 		},
 		{
-			"include": ["db/schema/index.ts"],
+			"includes": ["**/db/schema/index.ts"],
 			"linter": {
 				"rules": {
 					"performance": {
@@ -59,11 +79,27 @@
 			}
 		},
 		{
-			"include": ["db/index.ts"],
+			"includes": ["**/db/index.ts"],
+			"linter": {
+				"rules": {
+					"style": {},
+					"performance": {
+						"noNamespaceImport": "off"
+					}
+				}
+			}
+		},
+		{
+			"includes": ["**/lib/actions/**/*", "**/theme/index.ts"],
 			"linter": {
 				"rules": {
 					"style": {
-						"noNamespaceImport": "off"
+						"useNamingConvention": {
+							"level": "off",
+							"options": {
+								"strictCase": false
+							}
+						}
 					}
 				}
 			}

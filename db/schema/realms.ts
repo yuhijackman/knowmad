@@ -1,6 +1,5 @@
 // The main container for a single learning topic.
-import { profiles } from "@/db/schema/profiles";
-import { templates } from "@/db/schema/templates";
+
 import {
 	boolean,
 	index,
@@ -9,6 +8,8 @@ import {
 	timestamp,
 	uuid,
 } from "drizzle-orm/pg-core";
+import { profiles } from "@/db/schema/profiles";
+import { templates } from "@/db/schema/templates";
 
 export const realms = pgTable(
 	"realms",

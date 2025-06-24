@@ -1,21 +1,14 @@
+import "@mantine/core/styles.css"; //
+import {
+	ColorSchemeScript,
+	MantineProvider,
+	mantineHtmlProps,
+} from "@mantine/core";
 import type { Metadata } from "next";
-import { Figtree, Geist_Mono } from "next/font/google";
-import "./globals.css";
-
-const figtree = Figtree({
-	variable: "--font-figtree",
-	subsets: ["latin"],
-	display: "swap",
-});
-
-const geistMono = Geist_Mono({
-	variable: "--font-geist-mono",
-	subsets: ["latin"],
-	display: "swap",
-});
+import { theme } from "@/theme";
 
 export const metadata: Metadata = {
-	title: "Knowmad",
+	title: "Learning Realms",
 	description: "Your personal Self Learning OS",
 };
 
@@ -25,9 +18,18 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="en">
-			<body className={`${figtree.variable} ${geistMono.variable} antialiased`}>
-				{children}
+		<html lang="en" {...mantineHtmlProps}>
+			<head>
+				<ColorSchemeScript />
+				<meta
+					name="viewport"
+					content="minimum-scale=1, initial-scale=1, width=device-width"
+				/>
+			</head>
+			<body>
+				<MantineProvider theme={theme} defaultColorScheme="auto">
+					{children}
+				</MantineProvider>
 			</body>
 		</html>
 	);

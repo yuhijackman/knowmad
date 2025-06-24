@@ -23,10 +23,20 @@
 		"strings": true
 	},
 	"files.encoding": "utf8",
+	"files.associations": {
+		"*.module.css": "css"
+	},
 	"files.eol": "\n",
 	"tailwindCSS.experimental.classRegex": [
 		["classNames\\(([^)]*)\\)", "\"([^\"]*)\""]
 	],
 	"typescript.preferences.importModuleSpecifier": "non-relative",
-	"typescript.tsdk": "node_modules/typescript/lib"
+	"typescript.tsdk": "node_modules/typescript/lib",
+	"cssVariables.lookupFiles": [
+		"**/*.css",
+		"**/*.scss",
+		"**/*.sass",
+		"**/*.less",
+		"node_modules/@mantine/core/styles.css"
+	]
 }

@@ -1,6 +1,5 @@
 // Represents a structural unit within a Realm (e.g., a chapter, a section).
-import { profiles } from "@/db/schema/profiles";
-import { realms } from "@/db/schema/realms";
+
 import {
 	doublePrecision,
 	index,
@@ -9,6 +8,8 @@ import {
 	timestamp,
 	uuid,
 } from "drizzle-orm/pg-core";
+import { profiles } from "@/db/schema/profiles";
+import { realms } from "@/db/schema/realms";
 
 export const chambers = pgTable(
 	"chambers",
