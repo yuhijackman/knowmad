@@ -1,9 +1,10 @@
 // JOIN TABLE: resource_tags
 // Establishes the many-to-many relationship between resources and tags.
+
+import { pgTable, primaryKey, uuid } from "drizzle-orm/pg-core";
 import { profiles } from "@/db/schema/profiles";
 import { resources } from "@/db/schema/resources";
 import { tags } from "@/db/schema/tags";
-import { pgTable, primaryKey, uuid } from "drizzle-orm/pg-core";
 
 export const resourceTags = pgTable(
 	"resource_tags",

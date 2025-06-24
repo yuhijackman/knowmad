@@ -1,6 +1,6 @@
-import { users } from "@/db/schema/users";
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod";
+import { users } from "@/db/schema/users";
 
 export const loginSchema = z.object({
 	email: z.string().email({ message: "Invalid email address." }).trim(),

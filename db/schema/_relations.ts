@@ -1,12 +1,12 @@
+import { relations } from "drizzle-orm";
 import { chambers } from "@/db/schema/chambers";
 import { profiles } from "@/db/schema/profiles";
 import { realms } from "@/db/schema/realms";
-import { resourceTags } from "@/db/schema/resourceTags";
 import { resources } from "@/db/schema/resources";
+import { resourceTags } from "@/db/schema/resourceTags";
 import { tags } from "@/db/schema/tags";
 import { tasks } from "@/db/schema/tasks";
 import { templates } from "@/db/schema/templates";
-import { relations } from "drizzle-orm";
 
 export const profilesRelations = relations(profiles, ({ many }) => ({
 	realms: many(realms),

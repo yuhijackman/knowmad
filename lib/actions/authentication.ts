@@ -1,5 +1,7 @@
 "use server";
 
+import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 import {
 	DASHBOARD_PATH,
 	PASSWORD_RESET_PATH,
@@ -13,8 +15,6 @@ import {
 	signUpSchema,
 	updatePasswordSchema,
 } from "@/zod-schemas/authentication";
-import { revalidatePath } from "next/cache";
-import { redirect } from "next/navigation";
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 

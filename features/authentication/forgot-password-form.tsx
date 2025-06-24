@@ -1,12 +1,12 @@
 "use client";
 
-import { LOGIN_PATH } from "@/constants/routes";
-import { forgotPasswordAction } from "@/lib/actions/authentication";
-import type { ForgotPasswordInput } from "@/zod-schemas/authentication";
 import { Alert, Button, Group, Paper, Text, TextInput } from "@mantine/core";
 import { IconArrowLeft, IconInfoCircle } from "@tabler/icons-react";
 import Link from "next/link";
 import { useActionState, useMemo } from "react";
+import { LOGIN_PATH } from "@/constants/routes";
+import { forgotPasswordAction } from "@/lib/actions/authentication";
+import type { ForgotPasswordInput } from "@/zod-schemas/authentication";
 import classes from "./forgot-password-form.module.css";
 
 type ForgotPasswordInputKeys = keyof ForgotPasswordInput;

@@ -1,11 +1,11 @@
 import "@mantine/core/styles.css"; //
-import { theme } from "@/theme";
 import {
 	ColorSchemeScript,
 	MantineProvider,
 	mantineHtmlProps,
 } from "@mantine/core";
 import type { Metadata } from "next";
+import { theme } from "@/theme";
 
 export const metadata: Metadata = {
 	title: "Learning Realms",

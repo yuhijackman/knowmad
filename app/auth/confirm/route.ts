@@ -1,9 +1,8 @@
 import type { EmailOtpType } from "@supabase/supabase-js";
+import { redirect } from "next/navigation";
 import type { NextRequest } from "next/server";
-
 import { ONBOARDING_PATH } from "@/constants/routes";
 import { createClient } from "@/utils/supabase/server";
-import { redirect } from "next/navigation";
 
 export async function GET(request: NextRequest) {
 	const { searchParams } = new URL(request.url);
@@ -16,7 +15,6 @@ export async function GET(request: NextRequest) {
 
 		const { error } = await supabase.auth.verifyOtp({
 			type,
-			// biome-ignore lint/style/useNamingConvention: <explanation>
 			token_hash: tokenHash,
 		});
 		if (!error) {

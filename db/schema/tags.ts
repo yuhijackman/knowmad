@@ -1,5 +1,5 @@
-import { profiles } from "@/db/schema/profiles";
 import { index, pgTable, text, timestamp, uuid } from "drizzle-orm/pg-core";
+import { profiles } from "@/db/schema/profiles";
 
 // For more granular, flexible organization of resources. Each tag is unique per user.
 export const tags = pgTable(

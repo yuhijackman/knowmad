@@ -1,4 +1,4 @@
-import { type MantineColorsTuple, createTheme } from "@mantine/core";
+import { createTheme, type MantineColorsTuple } from "@mantine/core";
 import { Figtree } from "next/font/google";
 
 const figtree = Figtree({

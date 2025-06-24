@@ -1,15 +1,17 @@
-import { LOGIN_PATH } from "@/constants/routes";
-import { createClient } from "@/utils/supabase/server";
 import { Container, Flex } from "@mantine/core";
 import { redirect } from "next/navigation";
 import type { ReactNode } from "react";
+import { LOGIN_PATH } from "@/constants/routes";
+import { createClient } from "@/utils/supabase/server";
 
 /**
  * @param children
  */
 export default async function AuthenticatedLayout({
 	children,
-}: { children: ReactNode }) {
+}: {
+	children: ReactNode;
+}) {
 	const supabase = await createClient();
 	const {
 		data: { user },

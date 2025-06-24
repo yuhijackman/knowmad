@@ -1,11 +1,11 @@
+import { createServerClient } from "@supabase/ssr";
+import { type NextRequest, NextResponse } from "next/server";
 import {
 	DASHBOARD_PATH,
 	LOGIN_PATH,
 	ONBOARDING_PATH,
 	SIGN_UP_PATH,
 } from "@/constants/routes";
-import { createServerClient } from "@supabase/ssr";
-import { type NextRequest, NextResponse } from "next/server";
 
 const PROTECTED_PATHS = [DASHBOARD_PATH, ONBOARDING_PATH];
 

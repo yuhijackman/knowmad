@@ -1,9 +1,9 @@
 "use client";
-import { updatePasswordAction } from "@/lib/actions/authentication";
-import type { UpdatePasswordInput } from "@/zod-schemas/authentication";
 import { Alert, Button, Group, PasswordInput, Stack } from "@mantine/core";
 import { IconInfoCircle } from "@tabler/icons-react";
 import { useActionState, useMemo } from "react";
+import { updatePasswordAction } from "@/lib/actions/authentication";
+import type { UpdatePasswordInput } from "@/zod-schemas/authentication";
 
 type UpdatePasswordInputKeys = keyof UpdatePasswordInput;
 

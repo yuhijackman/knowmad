@@ -1,8 +1,5 @@
 "use client";
 
-import { LOGIN_PATH } from "@/constants/routes";
-import { signUpAction } from "@/lib/actions/authentication";
-import type { SignUpInput } from "@/zod-schemas/authentication";
 import {
 	Alert,
 	Button,
@@ -15,6 +12,9 @@ import {
 import { IconInfoCircle } from "@tabler/icons-react";
 import Link from "next/link";
 import { useActionState, useMemo } from "react";
+import { LOGIN_PATH } from "@/constants/routes";
+import { signUpAction } from "@/lib/actions/authentication";
+import type { SignUpInput } from "@/zod-schemas/authentication";
 
 type SignUpInputKeys = keyof SignUpInput;
 

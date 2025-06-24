@@ -1,5 +1,5 @@
-import { ForgotPasswordForm } from "@/features/authentication/forgot-password-form";
 import { Container, Text, Title } from "@mantine/core";
+import { ForgotPasswordForm } from "@/features/authentication/forgot-password-form";
 import classes from "./forgot-password.module.css";
 
 export default function ForgotPasswordPage() {

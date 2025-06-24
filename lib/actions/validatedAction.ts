@@ -1,6 +1,6 @@
-import { isRedirectError } from "@/utils/error";
 import { getURLFromRedirectError } from "next/dist/client/components/redirect";
 import type { z } from "zod";
+import { isRedirectError } from "@/utils/error";
 
 export type ValidatedActionResponse<
 	T,

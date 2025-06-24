@@ -1,6 +1,5 @@
 // Individual actionable items within a chamber.
-import { chambers } from "@/db/schema/chambers";
-import { profiles } from "@/db/schema/profiles";
+
 import {
 	doublePrecision,
 	index,
@@ -10,6 +9,8 @@ import {
 	timestamp,
 	uuid,
 } from "drizzle-orm/pg-core";
+import { chambers } from "@/db/schema/chambers";
+import { profiles } from "@/db/schema/profiles";
 
 export const TaskStatus = {
 	toDo: "To Do",

@@ -1,7 +1,7 @@
+import { Divider, Group, Paper, Text } from "@mantine/core";
 import { GithubButton } from "@/features/authentication/github-button";
 import { GoogleButton } from "@/features/authentication/google-button";
 import { SignUpForm } from "@/features/authentication/sign-up-form";
-import { Divider, Group, Paper, Text } from "@mantine/core";
 
 export default function SignUpPage() {
 	return (

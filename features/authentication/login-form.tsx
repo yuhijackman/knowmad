@@ -1,10 +1,5 @@
 "use client";
 
-import { FORGOT_PASSWORD_PATH, SIGN_UP_PATH } from "@/constants/routes";
-import { loginAction } from "@/lib/actions/authentication";
-import { IconInfoCircle } from "@tabler/icons-react";
-
-import type { LoginInput } from "@/zod-schemas/authentication";
 import {
 	Alert,
 	Button,
@@ -14,8 +9,12 @@ import {
 	Text,
 	TextInput,
 } from "@mantine/core";
+import { IconInfoCircle } from "@tabler/icons-react";
 import Link from "next/link";
 import { useActionState, useMemo } from "react";
+import { FORGOT_PASSWORD_PATH, SIGN_UP_PATH } from "@/constants/routes";
+import { loginAction } from "@/lib/actions/authentication";
+import type { LoginInput } from "@/zod-schemas/authentication";
 
 type LoginInputKeys = keyof LoginInput;
 
