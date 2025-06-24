@@ -10,10 +10,10 @@ export default function SignUpPage() {
 				<Alert variant="light" color="orange" title="Warning">
 					Sign-up with Google and GitHub is coming soon!
 				</Alert>
-				<Text size="lg" fw={500} ta="center" mb="md">
+				<Text size="lg" fw={500} ta="center">
 					Register with
 				</Text>
-				<Group grow={true} mb="md" mt="md">
+				<Group grow={true} mb="md">
 					<GoogleButton disabled={true} radius="xl">
 						Google
 					</GoogleButton>
@@ -23,7 +23,7 @@ export default function SignUpPage() {
 				</Group>
 			</Stack>
 
-			<Divider label="Or continue with email" labelPosition="center" my="lg" />
+			<Divider label="Or continue with email" labelPosition="center" mb="lg" />
 
 			<SignUpForm />
 		</Paper>
