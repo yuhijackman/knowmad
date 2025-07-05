@@ -1,14 +1,13 @@
 module.exports = {
 	plugins: {
-		"postcss-preset-mantine": {},
-		"postcss-simple-vars": {
-			variables: {
-				"mantine-breakpoint-xs": "36em",
-				"mantine-breakpoint-sm": "48em",
-				"mantine-breakpoint-md": "62em",
-				"mantine-breakpoint-lg": "75em",
-				"mantine-breakpoint-xl": "88em",
-			},
+		"@csstools/postcss-global-data": {
+			files: [
+				// We use path.resolve to create a reliable, absolute path to the file.
+				// IMPORTANT: Adjust this path to match the location of your global.css file!
+				"./ui/global.css",
+			],
 		},
+		"postcss-preset-mantine": {},
+		"postcss-custom-media": {},
 	},
 };

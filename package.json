@@ -11,8 +11,8 @@
 		"check": "biome check --write ."
 	},
 	"dependencies": {
-		"@mantine/core": "^8.1.0",
-		"@mantine/hooks": "^8.1.0",
+		"@mantine/core": "^8.1.2",
+		"@mantine/hooks": "^8.1.2",
 		"@mantinex/dev-icons": "^2.0.0",
 		"@supabase/ssr": "^0.6.1",
 		"@supabase/supabase-js": "^2.50.0",
@@ -27,11 +27,13 @@
 	},
 	"devDependencies": {
 		"@biomejs/biome": "2.0.5",
+		"@csstools/postcss-global-data": "^3.0.0",
 		"@types/node": "^20",
 		"@types/react": "^19",
 		"@types/react-dom": "^19",
 		"drizzle-kit": "^0.31.1",
 		"postcss": "^8.5.5",
+		"postcss-custom-media": "^11.0.6",
 		"postcss-preset-mantine": "^1.17.0",
 		"postcss-simple-vars": "^7.0.1",
 		"typescript": "^5"
