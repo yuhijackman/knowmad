@@ -14,7 +14,7 @@ import Link from "next/link";
 import { useActionState, useMemo } from "react";
 import { LOGIN_PATH } from "@/constants/routes";
 import { signUpAction } from "@/lib/actions/authentication";
-import type { SignUpInput } from "@/zod-schemas/authentication";
+import type { SignUpInput } from "@/lib/schemas/authentication.schemas";
 
 type SignUpInputKeys = keyof SignUpInput;
 

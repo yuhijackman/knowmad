@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useActionState, useMemo } from "react";
 import { LOGIN_PATH } from "@/constants/routes";
 import { forgotPasswordAction } from "@/lib/actions/authentication";
-import type { ForgotPasswordInput } from "@/zod-schemas/authentication";
+import type { ForgotPasswordInput } from "@/lib/schemas/authentication.schemas";
 import classes from "./forgot-password-form.module.css";
 
 type ForgotPasswordInputKeys = keyof ForgotPasswordInput;

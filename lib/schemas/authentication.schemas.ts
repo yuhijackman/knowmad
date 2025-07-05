@@ -1,6 +1,4 @@
-import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod";
-import { users } from "@/db/schema/users";
 
 export const loginSchema = z.object({
 	email: z.string().email({ message: "Invalid email address." }).trim(),
@@ -23,7 +21,6 @@ export const signUpSchema = z
 		message: "Passwords don't match.",
 		path: ["repeatPassword"],
 	});
-
 export const forgotPasswordSchema = z.object({
 	email: z.string().email({ message: "Invalid email address." }).trim(),
 });
@@ -42,12 +39,7 @@ export const updatePasswordSchema = z
 		path: ["repeatPassword"],
 	});
 
-export const insertUserDbSchema = createInsertSchema(users, {
-	id: (schema) => schema.min(1, { message: "User ID is required." }),
-});
-
 export type LoginInput = z.infer<typeof loginSchema>;
 export type SignUpInput = z.infer<typeof signUpSchema>;
 export type ForgotPasswordInput = z.infer<typeof forgotPasswordSchema>;
 export type UpdatePasswordInput = z.infer<typeof updatePasswordSchema>;
-export type InsertUserInput = z.infer<typeof insertUserDbSchema>;
