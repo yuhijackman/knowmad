@@ -10,10 +10,12 @@
 ├── features/             // FEATURES: Self-contained modules with UI and business logic.
 │   └── {feature}/
 │       ├── ...components.tsx
-│       └── use-{feature}.ts
+│       ├── use-{feature}.ts
+│       └── {feature}.schemas.ts  // Feature-specific form validation schemas.
 ├── lib/                  // SERVER & DATA: Server Actions and Data Access Layer.
 │   ├── actions/
 │   └── data/
+│   └── schemas/              // Server-side schemas derived from database tables.
 ├── db/                   // DATABASE: Drizzle ORM schema definitions.
 │   └── schema/
 ├── public/               // STATIC ASSETS: Images, fonts, etc.
@@ -57,6 +59,10 @@ Each feature directory is a self-contained module that includes its own UI compo
 - - RULE: This is the default location for business logic.
 - - EXAMPLE:
 - - - `features/authentication/use-authentication.ts` contains functions to log in/out, manage loading states, and handle errors. The login-form.tsx component calls this hook to get the logic it needs.
+- Feature Schemas (features/{feature-name}/{feature-name}.schemas.ts):
+- - Zod schemas for validating client-side form inputs related to the feature.
+- - EXAMPLE:
+- - - features/authentication/authentication.schemas.ts contains loginSchema and signUpSchema.
 
 ### 🗺️ app/
 
@@ -90,15 +96,36 @@ Each feature directory is a self-contained module that includes its own UI compo
 - - This layer performs NO validation or authorization. It trusts that the Action Layer has already sanitized the data and authorized the request.
 - - Contains simple functions that perform one database operation (e.g., getUserById, createProductInDb).
 
+#### 🛡️ lib/schemas/ (The Data Schema Layer)
+
+- PURPOSE: To define server-side Zod schemas derived directly from our database tables using drizzle-zod.
+
+- RULE:
+- - This directory holds the source of truth for the shape of our data in the database. These schemas are used for type safety in our server-side logic.
+
+- EXAMPLE: lib/schemas/users.schemas.ts contains insertUserDbSchema.
+
+## 🛡️ Schemas & Validation: A Three-Tier Strategy
+
+To ensure clarity and maintainability, we do not use a single top-level zod-schemas/ directory. Instead, we co-locate schemas with the code that consumes them, following a three-tier model.
+
+| Tier | Schema Type     | Location & Purpose                                                                                                          | Example                                                   |
+| ---- | --------------- | --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------- |
+| 1    | Feature Schemas | features/{name}/{name}.schemas.ts <br/> For validating client-side form inputs. Tightly coupled to the feature's UI.        | loginSchema, createProductSchema (for a form)             |
+| 2    | Action Schemas  | Top of lib/actions/{name}.ts <br/> For validating the input of a specific Server Action. Defines the action's API contract. | A CreateCommentSchema defined inside createCommentAction. |
+| 3    | Data Schemas    | lib/schemas/{table}.schemas.ts <br/> For server-side database type safety, generated with drizzle-zod.                      | insertUserDbSchema, selectProductDbSchema                 |
+
 ## 🏃QUICK REFERENCE: "WHERE DO I PUT THIS?
 
-| If you are creating...                                | Put it here...                                                                                         | And The Rule Is...                                              |
-| ----------------------------------------------------- | ------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------- |
-| A generic, reusable `<Button>`                        | `ui/button.tsx`                                                                                        | It's a dumb, application-agnostic UI primitive.                 |
-| The form for creating a new product                   | `features/products/product-form.tsx`                                                                   | It's a key part of the "Products" feature, and might be reused. |
-| The logic/state to handle the product form submission | `features/products/use-product-form.ts`                                                                | It's the logic for a feature, co-located with its UI.           |
-| A unique header graphic for the `/settings` page      | `app/(routes)/settings/_components/settings-header.tsx`                                                | It's decorative UI for one single page and nowhere else.        |
-| A hook to debounce search input (`use-debounce`)      | `hooks/use-debounce.ts`                                                                                | It's a generic utility with no business logic.                  |
-| The Drizzle schema for the `comments` table           | `db/schema/comments.ts` and import the `db/schema/comments.ts` and export it from `db/schema/index.ts` | It's a database table definition.                               |
-| The Drizzle query to fetch all comments for a post    | `lib/data/comments.ts` (e.g., `getCommentsByPostId`)                                                   | It's a raw database query.                                      |
-| The Server Action that lets a user create a comment   | `lib/actions/comments.ts` (e.g., `createCommentAction`)                                                | It's the secure entrypoint for a client-side mutation.          |
+| If you are creating...                                | Put it here...                                          | And The Rule Is...                                              |
+| ----------------------------------------------------- | ------------------------------------------------------- | --------------------------------------------------------------- |
+| A generic, reusable `<Button>`                        | `ui/button.tsx`                                         | It's a dumb, application-agnostic UI primitive.                 |
+| The form for creating a new product                   | `features/products/product-form.tsx`                    | It's a key part of the "Products" feature, and might be reused. |
+| The logic/state to handle the product form submission | `features/products/use-product-form.ts`                 | It's the logic for a feature, co-located with its UI.           |
+| A Zod schema for the product creation form            | `ffeatures/products/products.schemas.ts`                | It validates feature-specific form inputs on the client.        |
+| A unique header graphic for the `/settings` page      | `app/(routes)/settings/_components/settings-header.tsx` | It's decorative UI for one single page and nowhere else.        |
+| A hook to debounce search input (`use-debounce`)      | `hooks/use-debounce.ts`                                 | It's a generic utility with no business logic.                  |
+| The Drizzle schema for the `comments` table           | `db/schema/comments.ts`                                 | It's a database table definition.                               |
+| A drizzle-zod schema like createInsertSchema          | `lib/schemas/comments.schemas.ts`                       | It's a server-side representation of a database table.          |
+| The Drizzle query to fetch all comments for a post    | `lib/data/comments.ts` (e.g., `getCommentsByPostId`)    | It's a raw database query.                                      |
+| The Server Action that lets a user create a comment   | `lib/actions/comments.ts` (e.g., `createCommentAction`) | It's the secure entrypoint for a client-side mutation.          |
