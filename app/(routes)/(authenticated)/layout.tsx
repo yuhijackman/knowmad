@@ -12,19 +12,9 @@ export default async function AuthenticatedLayout({
 }: {
 	children: ReactNode;
 }) {
-	const supabase = await createClient();
-	const {
-		data: { user },
-		error: authError,
-	} = await supabase.auth.getUser();
-
-	if (authError || !user) {
-		redirect(LOGIN_PATH);
-	}
-
 	return (
-		<Container size="sm" h="100vh">
-			<Flex align="center" justify="center" h="100%">
+		<Container fluid h="100vh" p="0">
+			<Flex w="100%" h="100%">
 				{children}
 			</Flex>
 		</Container>

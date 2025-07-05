@@ -1,0 +1,25 @@
+/* styles.module.css */
+.responsiveContainer {
+	max-width: 100%;
+}
+
+/* For viewports 768px and wider */
+@media only screen and (--media-xs) {
+	.responsiveContainer {
+		max-width: 723px;
+	}
+}
+
+/* For viewports 992px and wider */
+@media only screen and (--media-sm) {
+	.responsiveContainer {
+		max-width: 933px;
+	}
+}
+
+/* For viewports 1200px and wider */
+@media only screen and (--media-md) {
+	.responsiveContainer {
+		max-width: 1127px;
+	}
+}

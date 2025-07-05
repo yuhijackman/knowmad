@@ -6,7 +6,7 @@ export default function AuthLayout({
 	children: React.ReactNode;
 }) {
 	return (
-		<Container size="sm" h="100vh">
+		<Container size="sm">
 			<Flex align="center" justify="center" h="100%">
 				{children}
 			</Flex>

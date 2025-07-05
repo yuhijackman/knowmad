@@ -8,13 +8,13 @@ import {
 	SIGN_UP_SUCCESS_PATH,
 } from "@/constants/routes";
 import { validatedAction } from "@/lib/actions/validatedAction";
-import { createClient } from "@/utils/supabase/server";
 import {
 	forgotPasswordSchema,
 	loginSchema,
 	signUpSchema,
 	updatePasswordSchema,
-} from "@/zod-schemas/authentication";
+} from "@/lib/schemas/authentication.schemas";
+import { createClient } from "@/utils/supabase/server";
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 

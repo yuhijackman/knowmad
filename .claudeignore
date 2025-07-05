@@ -1,0 +1,10 @@
+node_modules/
+.github/
+.vscode/
+.yarn/
+dist/
+github-scripts/
+build/
+*.log
+.env
+yarn.lock

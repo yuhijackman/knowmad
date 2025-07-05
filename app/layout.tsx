@@ -6,6 +6,7 @@ import {
 } from "@mantine/core";
 import type { Metadata } from "next";
 import { theme } from "@/theme";
+import "@/ui/global.css";
 
 export const metadata: Metadata = {
 	title: "Learning Realms",

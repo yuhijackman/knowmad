@@ -42,6 +42,9 @@
 				"useNumberNamespace": "error",
 				"noInferrableTypes": "error",
 				"noUselessElse": "error"
+			},
+			"correctness": {
+				"noUnknownMediaFeatureName": "off"
 			}
 		}
 	},
@@ -55,7 +58,7 @@
 		{
 			"includes": [
 				"**/next.config.ts",
-				"**/postcss.config.mjs",
+				"**/postcss.config.cjs",
 				"**/drizzle.config.ts",
 				"**/layout.tsx",
 				"**/page.tsx"
