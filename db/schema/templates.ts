@@ -20,3 +20,5 @@ export const templates = pgTable("templates", {
 		.defaultNow()
 		.notNull(),
 });
+
+export type Template = typeof templates.$inferSelect;
